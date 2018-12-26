@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as router from 'react-router-dom'
 import Allpages from './components/Allpages';
+import Editor from './components/Editor/Editor';
 
 const {BrowserRouter,Switch,Route} = router
 
@@ -9,7 +10,8 @@ class RouterContainer extends React.Component{
         return (
             <BrowserRouter basename="/">
                 <Switch>
-                    <Route path='/' component={Allpages}/>
+                    <Route path='/' exact={true} component={Allpages}/>
+                    <Route path='/editor' component={Editor}/>
                 </Switch>
             </BrowserRouter>
         )

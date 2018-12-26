@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "highlight.js": "^9.13.1",
+    "marked": "^0.5.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts-ts": "3.1.0",
+    "react-simplemde-editor": "^3.6.22",
+    "simplemde": "^1.11.2"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -52,5 +56,5 @@
     "ts-import-plugin": "^1.5.5",
     "ts-node": "^7.0.1"
   },
-  "proxy":"http://localhost:3333/"
+  "proxy": "http://localhost:3333/"
 }
