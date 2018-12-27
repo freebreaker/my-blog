@@ -3,3 +3,11 @@
     margin: 0 auto;
     text-align: left;
 }
+
+.ArticleTitle{
+    width: 100%;
+    border: none;
+    padding: 12px;
+    font-size: 1.5rem;
+    outline: none;
+}
