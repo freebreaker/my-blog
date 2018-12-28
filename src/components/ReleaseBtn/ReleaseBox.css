@@ -1,0 +1,23 @@
+.ReleaseBox{
+    width: 330px;
+    position: absolute;
+    left: -200px;
+    top: 30px;
+    padding: 1.2rem;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 0 1px 2px #f1f1f1;
+    box-shadow: 0 1px 2px #f1f1f1;
+    background: white;
+    z-index: 2;
+    text-align: left;
+}
+
+.ReleaseBox p{
+    font-size: 1.56rem;
+    font-weight: 700;
+    color: hsla(218,9%,51%,.8);
+}
+
+.ReleaseBox .ReleaseSubmit{
+    text-align: center;
+}

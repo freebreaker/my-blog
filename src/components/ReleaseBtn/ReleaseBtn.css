@@ -1,0 +1,10 @@
+.Release{
+    display: inline-block;
+    margin-right: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.Release span{
+    user-select:none
+}

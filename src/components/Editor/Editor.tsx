@@ -30,8 +30,6 @@ export default class Editor extends React.Component{
   };
 
   public render() {
-    
-
     return (
       <div>
         <div>
