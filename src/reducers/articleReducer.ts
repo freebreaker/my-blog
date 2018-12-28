@@ -4,7 +4,7 @@ interface ActionType {
     payload:any
 }
 
-const articleReducer = (state:any,action:ActionType) => {
+const articleReducer = (state={},action:ActionType) => {
     switch(action.type){
         case "STORE_ARTICLE_CONTENT":
             return Object.assign({},state,{

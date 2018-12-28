@@ -38,9 +38,6 @@ export default class Editor extends React.Component{
           <SimpleMDE
             className="Editor"
             onChange={this.handleChange}
-            options={{
-              autofocus:true
-            }}
           />
         </div>
       </div>
