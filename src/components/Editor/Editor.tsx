@@ -1,18 +1,27 @@
 import * as React from 'react';
+
 import SimpleMDE from 'react-simplemde-editor';
 import './Editor.css';
 import TopBar from '../TopBar/TopBar';
+import connect from '../../util/connect';
+
 
 interface EditorState {
   title:string
   text:string
 }
 
+@connect
+
 export default class Editor extends React.Component{
 
   public readonly state:Readonly<EditorState> = {
     title:"",
     text:""
+  }
+
+  public componentDidMount(){
+    console.log(this.props)
   }
 
   public handleTitle = (e:any)=>{
