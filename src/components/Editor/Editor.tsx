@@ -1,9 +1,9 @@
 import * as React from 'react';
-
+import {connect} from 'react-redux'
 import SimpleMDE from 'react-simplemde-editor';
 import './Editor.css';
 import TopBar from '../TopBar/TopBar';
-import connect from '../../util/connect';
+import {storeArticle,storeArticleTitle} from 'src/actions/index'
 
 
 interface EditorState {
@@ -11,13 +11,19 @@ interface EditorState {
   text:string
 }
 
-@connect
+interface EditorProps {
+  storeArticle:(value:string)=>void,
+  storeArticleTitle:(value:string)=>void
+}
 
-export default class Editor extends React.Component{
+class Editor extends React.Component<EditorProps,EditorState>{
 
-  public readonly state:Readonly<EditorState> = {
-    title:"",
-    text:""
+  constructor(props:any){
+    super(props)
+    this.state ={
+      title:"",
+      text:""
+    }
   }
 
   public componentDidMount(){
@@ -25,17 +31,17 @@ export default class Editor extends React.Component{
   }
 
   public handleTitle = (e:any)=>{
-    console.log(e.target.value)
     this.setState({
       title:e.target.value
     })
+    this.props.storeArticleTitle(e.target.value)
   }
 
   public handleChange = (value:any) => {
-    console.log(value)
     this.setState({
       text:value
     })
+    this.props.storeArticle(value)
   };
 
   public render() {
@@ -53,3 +59,11 @@ export default class Editor extends React.Component{
     );
   }
 }
+
+const mapStateToProps = (state: {}, ownProps: any) => {
+  return state
+};
+
+const mapDispatchToProps = {storeArticle,storeArticleTitle};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);

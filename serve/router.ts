@@ -2,7 +2,7 @@ import * as Router from 'koa-router';
 
 import renderFullPage from './renderFullPage';
 
-import {getArticleList} from './controller/articleController'
+import {getArticleList,postArticle} from './controller/articleController'
 
 const router = new Router()
 
@@ -15,6 +15,8 @@ router.get('/',async(ctx,next:any)=>{   // 服务端渲染首页
     renderFullPage(ctx,book);
 
 })
+
+router.post('/article',postArticle)
 
 router.get('/category',getArticleList)
 

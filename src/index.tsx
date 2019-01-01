@@ -7,7 +7,11 @@ import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store';
 
 const store = configureStore({
-  article:"这是一篇文章"
+  article:{
+    content:"this is an artilce",
+    title:"this is title",
+    category:"tech"
+  }
 })
 
 ReactDOM.render(
