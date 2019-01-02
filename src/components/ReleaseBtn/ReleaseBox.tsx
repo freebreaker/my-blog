@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {Radio,Button} from 'antd';
+import axios from 'axios';
+import {connect} from 'react-redux';
 import './ReleaseBox.css';
-
+import {storeCategoryName} from 'src/actions/index';
 
 const RadioGroup = Radio.Group
 
@@ -9,7 +11,16 @@ interface ReleaseBoxState {
   value:number
 }
 
-export default class ReleaseBox extends React.Component<any, ReleaseBoxState> {
+interface ReleaseBoxProps {
+  article:{
+    content:string,
+    title:string,
+    category:number
+  },
+  storeCategoryName:(value:string)=>void
+}
+
+class ReleaseBox extends React.Component<ReleaseBoxProps, ReleaseBoxState> {
 
   public readonly state:Readonly<ReleaseBoxState> = {
     value:1
@@ -17,8 +28,39 @@ export default class ReleaseBox extends React.Component<any, ReleaseBoxState> {
   
   public handleRadioValue =(e:any) => {
     console.log('radio checked',e.target.value)
+    this.props.storeCategoryName(e.target.value)
+  }
+
+  public componentDidMount(){
+    console.log(this.props)
+  }
+
+  public ArticleSubmit = (Data:object)=>{
+    axios({
+      method:"post",
+      url:"/article",
+      data:Data
+    })
+    .then((res)=>{
+      console.log(res)
+      console.log(this.props)
+    })
   }
   
+  public handleArticleSubmit = (e:any)=>{
+    const {content,title,category} = this.props.article
+    const postData = {
+      "content":content,
+      "title":title,
+      "category":category
+    }
+    if(!content||!title||!category){
+      alert("XXX can not be empty")
+    }else{
+      this.ArticleSubmit(postData)
+    }
+  }
+
   public render() {
     return (
       <div className="ReleaseBox">
@@ -31,9 +73,17 @@ export default class ReleaseBox extends React.Component<any, ReleaseBoxState> {
         </RadioGroup>
         <h3 style={{marginTop:"0.5em"}}>标签</h3>
         <div className="ReleaseSubmit">
-          <Button type="primary" block={true}>确认并提交</Button>
+          <Button type="primary" block={true} onClick={this.handleArticleSubmit}>确认并提交</Button>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state: {}, ownProps: any) => {
+  return state
+};
+
+const mapDispatchToProps = {storeCategoryName};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReleaseBox);

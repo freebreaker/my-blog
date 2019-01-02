@@ -2,15 +2,13 @@ import * as React from 'react';
 import './ReleaseBtn.css';
 import ReleaseBox from './ReleaseBox';
 
-interface ReleaseBtnProps {
-    show:boolean
-}
+
 
 interface ReleaseBtnState {
     isOpen:boolean
 }
 
-export default class ReleaseBtn extends React.Component<ReleaseBtnProps, any> {
+export default class ReleaseBtn extends React.Component<any, any> {
 
   public readonly state:Readonly<ReleaseBtnState> = {
     isOpen:false

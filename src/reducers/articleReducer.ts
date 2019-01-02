@@ -14,6 +14,10 @@ const articleReducer = (state={},action:ActionType) => {
             return Object.assign({},state,{
                 title:action.payload
             })
+        case "STORE_CATEGORY_NAME":
+            return Object.assign({},state,{
+                category:action.payload
+            })
         default:return state
     }
 }

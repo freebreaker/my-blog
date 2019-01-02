@@ -4,9 +4,9 @@ import {sequelize} from '../sql/db_connection';
 
 export const CategoryModel = sequelize.define("t_category",{
     id:{
-        type:Sequelize.STRING,
+        type:Sequelize.INTEGER,
         primaryKey:true,
-        defaultValue: Sequelize.UUIDV4
+        defaultValue: 1
     }, 
     name: {type:Sequelize.STRING(50),allowNull:false},
     createdAt: Sequelize.DATEONLY,

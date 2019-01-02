@@ -1,6 +1,6 @@
 .Release{
     display: inline-block;
-    margin-right: 25px;
+    margin: 0 1rem;
     cursor: pointer;
     position: relative;
 }

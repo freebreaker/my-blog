@@ -5,7 +5,6 @@ declare module '*.jpeg'
 declare module '*.gif'
 declare module '*.bmp'
 declare module '*.tiff'
-declare module 'simplemde'
 declare module 'marked'
 declare module 'highlight.js'
-declare module 'react-simplemde-editor'
+
