@@ -1,19 +1,28 @@
 import * as React from 'react';
-
+import {connect} from 'react-redux';
 import SimpleMDE from 'react-simplemde-editor';
 import './Editor.css';
 import TopBar from '../TopBar/TopBar';
-import connect from '../../util/connect';
-
+// import Connect from '../../util/connect';
+import {storeArticle} from 'src/actions/index';
 
 interface EditorState {
   title:string
   text:string
 }
 
-@connect
+const mapStateToProps = (state:any) => {
+  return state;
+} 
 
-export default class Editor extends React.Component{
+// 方法
+const actionCreators = [storeArticle];
+
+
+@connect(mapStateToProps, [actionCreators])
+
+
+class EditorWrap extends React.Component{
 
   public readonly state:Readonly<EditorState> = {
     title:"",
@@ -53,3 +62,6 @@ export default class Editor extends React.Component{
     );
   }
 }
+
+const Editor = connect(mapStateToProps, actionCreators)(EditorWrap);
+export default Editor
