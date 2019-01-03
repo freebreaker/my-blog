@@ -44,3 +44,16 @@ export let postArticle = async(ctx:any,next:any)=>{
     
 
 }
+
+export let getArticle = async(ctx:any,next:any)=>{
+    const {id} = ctx.request.query
+    console.log(id)
+    const res = await ArticleModel.find({
+        where:{
+            "id":id
+        }
+    })
+
+    ctx.body = res
+
+}

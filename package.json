@@ -9,6 +9,7 @@
     "@types/simplemde": "^1.11.7",
     "highlight.js": "^9.13.1",
     "marked": "^0.5.2",
+    "marked-ts": "^1.0.0-beta.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
