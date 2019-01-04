@@ -5,7 +5,6 @@ import './Editor.css';
 import TopBar from '../TopBar/TopBar';
 import {storeArticle,storeArticleTitle} from 'src/actions/index'
 
-
 interface EditorState {
   title:string
   text:string

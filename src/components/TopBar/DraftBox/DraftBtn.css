@@ -1,0 +1,10 @@
+.DraftBtn{
+    display: inline-block;
+    margin: 0 1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.DraftBtn span{
+    user-select:none
+}
