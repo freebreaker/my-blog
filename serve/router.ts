@@ -1,6 +1,6 @@
 import * as Router from 'koa-router';
 import renderFullPage from './renderFullPage';
-import {getArticleList,postArticle,getArticle} from './controller/articleController'
+import {getArticleList,postArticle,getArticle} from './controller/articleController';
 import { getCategoryList } from './controller/CategoryController';
 
 const router = new Router()
