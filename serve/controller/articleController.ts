@@ -15,7 +15,7 @@ export let getArticleList = async(ctx:any,next:any)=>{   // 显示所有person
 
 }
 
-export let postArticle = async(ctx:any,next:any)=>{
+export let postArticle = async(ctx:any,next:any)=>{  // 发表文章
 
     const {content,title,category}:{content:string,title:string,category:number} =ctx.request.body
 
@@ -45,7 +45,7 @@ export let postArticle = async(ctx:any,next:any)=>{
 
 }
 
-export let getArticle = async(ctx:any,next:any)=>{
+export let getArticle = async(ctx:any,next:any)=>{   // 查询文章
     const {id} = ctx.request.query
     console.log(id)
     const res = await ArticleModel.find({
@@ -57,3 +57,4 @@ export let getArticle = async(ctx:any,next:any)=>{
     ctx.body = res
 
 }
+

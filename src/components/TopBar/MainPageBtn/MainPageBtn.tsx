@@ -11,11 +11,11 @@ export default class MainPageBtn extends React.Component<MainPageBtnProps, any> 
   public render() {
     return (
       <div className="MainPageBtn">
-          <Dropdown overlay={MainPageBox} trigger={['click']} placement="bottomCenter">
+          <Dropdown overlay={MainPageBox} trigger={['hover']} placement="bottomCenter">
                 <a className="ant-dropdown-link" href="#">
                     主页
                 </a>
-            </Dropdown>,
+          </Dropdown>,
       </div>
     );
   }

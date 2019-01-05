@@ -3,6 +3,7 @@ import './TopBar.css';
 import {Link} from 'react-router-dom';
 import ReleaseBtn from './ReleaseBtn/ReleaseBtn';
 import MainPageBtn from './MainPageBtn/MainPageBtn';
+import DraftBtn from './DraftBox/DraftBtn';
 
 export interface TopBarProps {
     ShowReleaseBtn:boolean
@@ -18,6 +19,9 @@ export default class TopBar extends React.Component<TopBarProps, any> {
         }}>
             首页
         </Link>
+        {
+          this.props.ShowReleaseBtn?<DraftBtn/>:""
+        }
         {
           this.props.ShowReleaseBtn?<ReleaseBtn/>:""
         }

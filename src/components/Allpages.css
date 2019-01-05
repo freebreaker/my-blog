@@ -1,5 +1,9 @@
+body{
+    background: #f6f6f6;
+}
 .TabBar{
-    width: 60%;
+    width: 55%;
     margin: 0 auto;
     margin-top: 80px;
+    background: white;
 }
