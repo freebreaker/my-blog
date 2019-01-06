@@ -4,6 +4,10 @@ import SimpleMDE from 'react-simplemde-editor';
 import './Editor.css';
 import TopBar from '../TopBar/TopBar';
 import {storeArticle,storeArticleTitle} from 'src/actions/index'
+import {createDraft,storeDraft} from 'src/actions/draft'
+import {v1} from 'node-uuid';
+
+// const v1Id = v1()
 
 interface EditorState {
   title:string
@@ -11,8 +15,19 @@ interface EditorState {
 }
 
 interface EditorProps {
+  history:any
   storeArticle:(value:string)=>void,
-  storeArticleTitle:(value:string)=>void
+  storeArticleTitle:(value:string)=>void,
+  createDraft:(draftMsg:{
+      draftId:string,
+      title:string,
+      markdown:string,
+      published:boolean
+  })=>void,
+  storeDraft:(storeDraftMsgs:{
+    title:string,
+    markdown:string,
+  })=>void
 }
 
 class Editor extends React.Component<EditorProps,EditorState>{
@@ -30,18 +45,56 @@ class Editor extends React.Component<EditorProps,EditorState>{
   }
 
   public handleTitle = (e:any)=>{
+
+    const v1Id = v1()
+
     this.setState({
       title:e.target.value
     })
+
     this.props.storeArticleTitle(e.target.value)
+
+    this.props.createDraft({
+      draftId:v1Id,
+      title:e.target.value,
+      markdown:this.state.text,
+      published:false
+    })
+
+    this.props.storeDraft({
+      title:e.target.value,
+      markdown:this.state.text
+    })
+
+    this.props.history.push(`/editor/${v1Id}`,{
+      draftId:v1Id
+    })
+
   }
 
   public handleChange = (value:any) => {
+    console.log(value)
+    const v1Id = v1()
+
     this.setState({
       text:value
     })
-    this.props.storeArticle(value)
+
+    this.props.storeArticle(value)  // store article
+
+    this.props.createDraft({
+      draftId:v1Id,
+      title:this.state.title,
+      markdown:value,
+      published:false
+    })
+
+    this.props.history.push(`/editor/${v1Id}`,{
+      draftId:v1Id
+    })
+
   };
+
 
   public render() {
     return (
@@ -52,7 +105,7 @@ class Editor extends React.Component<EditorProps,EditorState>{
           <SimpleMDE
             className="Editor"
             onChange={this.handleChange}
-            
+            value={this.state.text}
           />
         </div>
       </div>
@@ -64,6 +117,6 @@ const mapStateToProps = (state: {}, ownProps: any) => {
   return state
 };
 
-const mapDispatchToProps = {storeArticle,storeArticleTitle};
+const mapDispatchToProps = {storeArticle,storeArticleTitle,storeDraft,createDraft};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editor);

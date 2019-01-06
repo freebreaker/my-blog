@@ -26,7 +26,7 @@ export default class TopBar extends React.Component<TopBarProps, any> {
           this.props.ShowReleaseBtn?<ReleaseBtn/>:""
         }
         <Link to={{
-            pathname:"/editor",
+            pathname:"/editor/new",
             state:{}
         }}>
             写文章

@@ -13,6 +13,7 @@ interface ReleaseBoxState {
 
 interface ReleaseBoxProps {
   article:{
+    id:string
     content:string,
     title:string,
     category:number
@@ -48,8 +49,9 @@ class ReleaseBox extends React.Component<ReleaseBoxProps, ReleaseBoxState> {
   }
   
   public handleArticleSubmit = (e:any)=>{
-    const {content,title,category} = this.props.article
+    const {id,content,title,category} = this.props.article
     const postData = {
+      "articleId":id,
       "content":content,
       "title":title,
       "category":category

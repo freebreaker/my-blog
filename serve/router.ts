@@ -2,7 +2,8 @@ import * as Router from 'koa-router';
 import renderFullPage from './renderFullPage';
 import {getArticleList,postArticle,getArticle} from './controller/articleController';
 import { getCategoryList } from './controller/CategoryController';
-import { getDraftList } from './controller/DraftController';
+import { getDraftList,createDraft,getDraft,updateDraft} from './controller/DraftController';
+
 
 const router = new Router()
 
@@ -25,5 +26,11 @@ router.get('/categorylist',getCategoryList)
 router.get('/p',getArticle)
 
 router.get('/draftList',getDraftList)
+
+router.get('/getDraft',getDraft)   
+
+router.post('/createDraft',createDraft)
+
+router.post('/updateDraft',updateDraft)
 
 export default router;

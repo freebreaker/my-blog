@@ -10,15 +10,14 @@ export const DraftModel = sequelize.define("t_draft",{
         defaultValue: Sequelize.UUIDV4
     }, 
     title:{type:Sequelize.STRING(200),allowNull:false},
-    summary:Sequelize.STRING,
-    published:Sequelize.BOOLEAN,
-    category_id:Sequelize.INTEGER
+    markdown:Sequelize.STRING,
+    published:Sequelize.BOOLEAN
 },
 {
     timestamps: true
 })
 
-DraftModel.sync({force:true})
+// DraftModel.sync({force:true})
 
 // ArticleModel.belongsTo(CategoryModel,{as:"Category",foreignKey:"category_id"})
 

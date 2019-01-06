@@ -6,6 +6,10 @@ interface ActionType {
 
 const articleReducer = (state={},action:ActionType) => {
     switch(action.type){
+        case "STORE_ARTICLE_ID":
+            return Object.assign({},state,{
+                id:action.payload
+            })
         case "STORE_ARTICLE_CONTENT":
             return Object.assign({},state,{
                 content:action.payload
