@@ -7,7 +7,7 @@ export default class DraftList extends React.Component<any, any> {
     return (
       <div>
         <TopBar ShowReleaseBtn={false}/>
-        DraftList
+          DraftList
       </div>
     );
   }

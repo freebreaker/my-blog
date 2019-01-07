@@ -42,8 +42,6 @@ class DraftEditor extends React.Component<EditorProps,EditorState>{
 
   public componentDidMount(){
 
-    console.log(this.props)
-
     const draftId = this.props.location.state.draftId
 
     this.props.getDraft({"draftId":draftId})
@@ -52,9 +50,21 @@ class DraftEditor extends React.Component<EditorProps,EditorState>{
 
   }
 
-  public handleTitle = (e:any)=>{
-
+  public debounce =(method:any,context:any)=>{
+    
     const draftId = this.props.location.state.draftId
+    clearTimeout(method.timeout)
+    method.timeout = setTimeout(() => {
+      method.call(context,{
+        "draftId":draftId,
+        title:this.state.title||this.props.draft.title,
+        markdown:this.state.text||this.props.draft.content,
+        published:false
+      })
+    }, 1500);
+  }
+
+  public handleTitle = (e:any)=>{
 
     this.setState({
       title:e.target.value
@@ -62,12 +72,8 @@ class DraftEditor extends React.Component<EditorProps,EditorState>{
 
     this.props.storeArticleTitle(e.target.value)
 
-    this.props.updateDraft({
-      "draftId":draftId,
-      title:e.target.value,
-      markdown:this.state.text||this.props.draft.content,
-      published:false
-    })
+    this.debounce(this.handleUpdateDraft,this)
+
   }
 
   public handleChange = (value:any) => {
@@ -77,7 +83,18 @@ class DraftEditor extends React.Component<EditorProps,EditorState>{
 
     this.props.storeArticle(value)  // store article
 
+    this.debounce(this.handleUpdateDraft,this)
+
   };
+
+  public handleUpdateDraft = (draftMsg:{
+      draftId:string,
+      title:string,
+      markdown:string,
+      published:boolean
+  })=>{
+    this.props.updateDraft(draftMsg)
+  }
 
 
   public render() {

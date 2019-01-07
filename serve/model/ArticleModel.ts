@@ -2,6 +2,8 @@
 import * as Sequelize from 'sequelize';
 import {sequelize} from '../sql/db_connection';
 // import {CategoryModel} from './CategoryModel';
+// import { DraftModel } from './DraftModel';
+
 
 export const ArticleModel = sequelize.define("t_article",{
     id:{
@@ -11,7 +13,7 @@ export const ArticleModel = sequelize.define("t_article",{
     }, 
     title:{type:Sequelize.STRING(200),allowNull:false},
     summary:Sequelize.STRING,
-    category_id:Sequelize.INTEGER
+    category_id:Sequelize.INTEGER,
 },
 {
     timestamps: true
@@ -21,6 +23,9 @@ export const ArticleModel = sequelize.define("t_article",{
 
 // ArticleModel.belongsTo(CategoryModel,{as:"Category",foreignKey:"category_id"})
 
+// ArticleModel.belongsTo(DraftModel,{as:"Drafts",foreignKey:"id"})
+
 // CategoryModel.hasMany(ArticleModel,{as:'Articles',foreignKey:'category_id'});
 
+// DraftModel.hasMany(ArticleModel,{as:'Articles',foreignKey:'id'});
 
