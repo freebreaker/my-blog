@@ -85,7 +85,7 @@ export let deleteDraft = async(ctx:any,next:any)=>{  // 发表文章
     const {draftId} = ctx.request.body
 
     if(draftId){
-        // 插入数据
+        
         await DraftModel.destroy({
             'where':{'id':draftId}
         })

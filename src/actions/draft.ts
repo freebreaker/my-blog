@@ -94,7 +94,6 @@ export const getDraftList =()=>(
             withCredentials:true
         })
         .then(res=>{
-            console.log(res.data)
             dispatch({
                 type:"STORE_DRAFTLIST",
                 payload:res.data
@@ -104,7 +103,7 @@ export const getDraftList =()=>(
 )
 
 
-export const deleteDraft =(draftId:string)=>{
+export const deleteDraft =(draftId:string)=>(
 
     (dispatch:any)=>(
         axios({
@@ -123,4 +122,4 @@ export const deleteDraft =(draftId:string)=>{
             })
         })
     )
-}
+)

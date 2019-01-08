@@ -19,12 +19,14 @@ export default class DraftBox extends React.Component<any, any> {
             <Link to={{
                 pathname:`/editor/${this.props.draftId}`,
                 state:{
-                    draftId:this.props.draftId
+                    draftId:this.props.draftId,
+                    title:this.props.title,
+                    markdown:this.props.markdown
                 }
             }}>
                 {this.props.title}
             </Link>
-            <span onClick={this.props.deleteDraft}>删除</span>
+            <span onClick={this.props.deleteDraft.bind(this,this.props.draftId)}>删除</span>
         </h3>
         <article>
             <p>

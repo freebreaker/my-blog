@@ -67,7 +67,9 @@ class Editor extends React.Component<EditorProps,EditorState>{
     })
 
     this.props.history.push(`/editor/${v1Id}`,{
-      draftId:v1Id
+      draftId:v1Id,
+      title:this.state.title,
+      markdown:this.state.text
     })
 
   }
@@ -90,7 +92,9 @@ class Editor extends React.Component<EditorProps,EditorState>{
     })
 
     this.props.history.push(`/editor/${v1Id}`,{
-      draftId:v1Id
+      draftId:v1Id,
+      title:this.state.title,
+      markdown:value
     })
 
   };

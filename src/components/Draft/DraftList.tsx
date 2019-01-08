@@ -38,18 +38,17 @@ class DraftList extends React.Component<DraftListProps, any> {
     }catch(e){
       console.log(e)
     }
-    console.log(strLen)
+
     return strLen;
   }
 
   public render() {
-    console.log(this.props.draft.draftList)
     const draftList = this.props.draft.draftList.map((item:any,index:number)=>{
       return (
         <div key={index}>
           <DraftBox title={item.title} draftId={item.id} markdown={item.markdown}
           count={this.count(item.markdown)}
-          deleteDraft={this.props.deleteDraft(item.id)}
+          deleteDraft={this.props.deleteDraft}
           />
         </div>
       )

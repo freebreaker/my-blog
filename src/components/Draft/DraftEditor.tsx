@@ -42,11 +42,15 @@ class DraftEditor extends React.Component<EditorProps,EditorState>{
 
   public componentDidMount(){
 
-    const draftId = this.props.location.state.draftId
-
+    const {draftId,title,markdown} = this.props.location.state
+    console.log(this.props.location.state)
     this.props.getDraft({"draftId":draftId})
 
     this.props.storeArticleId(draftId)
+
+    this.props.storeArticleTitle(title)
+
+    this.props.storeArticle(markdown)
 
   }
 
