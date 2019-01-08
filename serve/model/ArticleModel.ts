@@ -19,7 +19,7 @@ export const ArticleModel = sequelize.define("t_article",{
     timestamps: true
 })
 
-// sequelize.sync({force:true})
+// ArticleModel.sync({force:true})
 
 // ArticleModel.belongsTo(CategoryModel,{as:"Category",foreignKey:"category_id"})
 

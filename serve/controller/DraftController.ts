@@ -37,6 +37,7 @@ export let createDraft = async(ctx:any,next:any)=>{
 
 }
 
+
 export let getDraft = async(ctx:any,next:any)=>{ 
     const {id} = ctx.request.query
     console.log(id)
@@ -74,6 +75,33 @@ export let updateDraft = async(ctx:any,next:any)=>{  // 发表文章
         ctx.body = {
             success:false,
             msg:"更新失败"
+        }
+    }
+
+}
+
+export let deleteDraft = async(ctx:any,next:any)=>{  // 发表文章
+
+    const {draftId} = ctx.request.body
+
+    if(draftId){
+        // 插入数据
+        await DraftModel.destroy({
+            'where':{'id':draftId}
+        })
+
+        const res = await DraftModel.findAll()
+
+        ctx.body = {
+            success:true,
+            msg:"删除成功",
+            data:res
+        }
+
+    }else{
+        ctx.body = {
+            success:false,
+            msg:"删除失败"
         }
     }
 

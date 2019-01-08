@@ -13,6 +13,11 @@ const store = configureStore({
     content:"this is an artilce",
     title:"this is title",
     category:1
+  },
+  draft:{
+    draftList:[],
+    title:"",
+    content:""
   }
 })
 
