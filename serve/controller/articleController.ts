@@ -1,4 +1,5 @@
 import { ArticleModel } from '../model/ArticleModel';
+import { DraftModel } from '../model/DraftModel';
 
 export let getArticleList = async(ctx:any,next:any)=>{   // 显示所有person
 
@@ -25,6 +26,12 @@ export let postArticle = async(ctx:any,next:any)=>{  // 发表文章
             "title":title,
             summary:content,
             category_id:category
+        }).then(()=>{
+            DraftModel.update({
+                "published":true
+            },{
+                'where':{id:articleId}
+            })
         })
 
         ctx.body = {

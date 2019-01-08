@@ -19,6 +19,10 @@ const draftReducer = (state={},action:ActionType) => {
                 title:action.payload.title,
                 content:action.payload.markdown
             })
+        case "STORE_DRAFTLIST":
+            return Object.assign({},state,{
+                draftList:action.payload
+            })
         default:return state
     }
 }

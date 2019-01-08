@@ -84,3 +84,43 @@ export const storeDraft = (storeDraftMsgs:{
             })
         )
     )
+
+
+export const getDraftList =()=>(
+    (dispatch:any)=>(
+        axios({
+            method:"get",
+            url:"/draftList",
+            withCredentials:true
+        })
+        .then(res=>{
+            console.log(res.data)
+            dispatch({
+                type:"STORE_DRAFTLIST",
+                payload:res.data
+            })
+        })
+    )
+)
+
+
+export const deleteDraft =(draftId:string)=>{
+
+    (dispatch:any)=>(
+        axios({
+            method:"post",
+            url:"/deleteDraft",
+            data:{
+                "draftId":draftId
+            },
+            withCredentials:true
+        })
+        .then(res=>{
+            console.log(res.data)
+            dispatch({
+                type:"STORE_DRAFTLIST",
+                payload:res.data.data
+            })
+        })
+    )
+}
