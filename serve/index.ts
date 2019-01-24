@@ -8,6 +8,8 @@ import * as path from 'path';
 
 import * as bodyparser from 'koa-bodyparser';
 
+console.log(2)
+
 hook({
     extensions: ['.css', '.less', '.scss'],
     generateScopedName: '[name]__[local]',
@@ -27,6 +29,6 @@ app.use(require('koa-static')(path.join(__dirname, '../build'),{
     maxage: 365 * 60 * 60 * 24,
 }));
 
-app.listen(80)
+app.listen(8080)
 
-console.log(80)
+console.log(8080)
