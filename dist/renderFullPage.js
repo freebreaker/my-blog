@@ -7,7 +7,7 @@ const fs = require("fs");
 // import ssr from './ssr'
 const renderFullPage = (ctx, newState) => {
     // const context= {}
-    const html = fs.readFileSync('build/index.html', 'utf-8');
+    const html = fs.readFileSync('../build/index.html', 'utf-8');
     // const ReactDOMServerHtml = ReactDOMServer.renderToString(ssr(ctx.req.url,context,newState));
     ctx.type = 'html';
     ctx.body = html;

@@ -14,4 +14,5 @@ exports.CategoryModel = db_connection_1.sequelize.define("t_category", {
 }, {
     timestamps: true
 });
+exports.CategoryModel.sync({ force: true });
 //# sourceMappingURL=CategoryModel.js.map
