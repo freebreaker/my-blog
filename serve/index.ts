@@ -27,6 +27,6 @@ app.use(require('koa-static')(path.join(__dirname, '../build'),{
     maxage: 365 * 60 * 60 * 24,
 }));
 
-app.listen(3333)
+app.listen(80)
 
-console.log(33)
+console.log(80)

@@ -15,7 +15,7 @@ export default class MainPageBtn extends React.Component<MainPageBtnProps, any> 
                 <a className="ant-dropdown-link" href="#">
                     主页
                 </a>
-          </Dropdown>,
+          </Dropdown>
       </div>
     );
   }

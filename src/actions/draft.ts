@@ -1,5 +1,4 @@
-
-import axios from 'axios';
+import axios from "../util/Axios";
 
 export const createDraft = (draftMsgs:{
         draftId:string,

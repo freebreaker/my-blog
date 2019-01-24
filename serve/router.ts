@@ -3,7 +3,8 @@ import renderFullPage from './renderFullPage';
 import {getArticleList,postArticle,getArticle} from './controller/articleController';
 import { getCategoryList } from './controller/CategoryController';
 import { getDraftList,createDraft,getDraft,updateDraft,deleteDraft} from './controller/DraftController';
-
+import { LogIn, Register} from './controller/UserController';
+import verifyToken from './middleware/verifyToken'
 
 const router = new Router()
 
@@ -29,10 +30,15 @@ router.get('/draftList',getDraftList)  // 获取草稿列表
 
 router.get('/getDraft',getDraft)   // 获取草稿具体
 
-router.post('/createDraft',createDraft)  // 发表草稿
+router.post('/createDraft',verifyToken,createDraft)  // 发表草稿
 
 router.post('/updateDraft',updateDraft)  // 更新草稿
 
 router.post('/deleteDraft',deleteDraft)
+
+router.post('/login',LogIn)  // 登录
+
+router.post("/register",Register)  // 注册
+
 
 export default router;

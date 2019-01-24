@@ -24,7 +24,6 @@ export default class ArticleBox extends React.Component<ArticleBoxProps, any> {
       console.log(this.props)
   }
   public render() {
-    console.log(this.props)
     return (
       <div className="ArticleBox">
         <h3>

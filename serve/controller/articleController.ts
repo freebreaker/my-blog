@@ -23,9 +23,11 @@ export let postArticle = async(ctx:any,next:any)=>{  // 发表文章
         // 插入数据
         const ifHasArticleId = await ArticleModel.findById(articleId)
 
+        console.log("ddddddddddddddddd"+ ifHasArticleId)
+
         let res;
 
-        if(ifHasArticleId===""){
+        if(!ifHasArticleId){
             res = await ArticleModel.create({
                 id:articleId,
                 "title":title,

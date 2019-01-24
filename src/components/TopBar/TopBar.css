@@ -9,3 +9,7 @@
     display: inline-block;
     margin: 0 1rem;
 }
+
+.TopBar span{
+    cursor: pointer;
+}

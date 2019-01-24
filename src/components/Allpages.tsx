@@ -58,8 +58,10 @@ export default class Allpages extends React.Component<any,AllpagesState>{
                 <TabPane tab="生活" key="2">Content of Tab Pane 2</TabPane>
                 <TabPane tab="闲谈" key="3">Content of Tab Pane 3</TabPane> */}
                 {TabPaneGroup}
+                
               </Tabs>
           </div>
+
       </div>
     );
   }

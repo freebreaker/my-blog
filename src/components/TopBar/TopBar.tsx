@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import ReleaseBtn from './ReleaseBtn/ReleaseBtn';
 import MainPageBtn from './MainPageBtn/MainPageBtn';
 import DraftBtn from './DraftBox/DraftBtn';
+import LogInBox from '../LogInForm/LogInBox';
 
 export interface TopBarProps {
     ShowReleaseBtn:boolean
@@ -32,6 +33,7 @@ export default class TopBar extends React.Component<TopBarProps, any> {
             写文章
         </Link>
         <MainPageBtn Show={true}/>
+        <LogInBox/>
       </div>
     );
   }
