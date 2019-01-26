@@ -1,7 +1,7 @@
 
 import * as Sequelize from 'sequelize';
 import {sequelize} from '../sql/db_connection';
-import {CategoryModel} from './CategoryModel';
+// import {CategoryModel} from './CategoryModel';
 // import { DraftModel } from './DraftModel';
 
 
@@ -19,13 +19,16 @@ export const ArticleModel = sequelize.define("t_article",{
     timestamps: true
 })
 
-ArticleModel.sync({force:true})
+// ArticleModel.sync({force:true})
 
-ArticleModel.belongsTo(CategoryModel,{as:"Category",foreignKey:"category_id"})
+// ArticleModel.belongsTo(CategoryModel)
+
+
+
 
 // ArticleModel.belongsTo(DraftModel,{as:"Drafts",foreignKey:"id"})
 
-CategoryModel.hasMany(ArticleModel,{as:'Articles',foreignKey:'category_id'});
+// CategoryModel.hasMany(ArticleModel);
 
 // DraftModel.hasMany(ArticleModel,{as:'Articles',foreignKey:'id'});
 

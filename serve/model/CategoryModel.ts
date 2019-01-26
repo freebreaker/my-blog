@@ -16,3 +16,4 @@ export const CategoryModel = sequelize.define("t_category",{
     timestamps: true
 })
 
+// CategoryModel.sync({force:true})

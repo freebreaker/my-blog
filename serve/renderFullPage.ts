@@ -9,7 +9,7 @@ const renderFullPage=(ctx:any,newState:object)=>{
 
     // const context= {}
 
-    const html = fs.readFileSync('build/index.html','utf-8');
+    const html = fs.readFileSync('../build/index.html','utf-8');
 
     // const ReactDOMServerHtml = ReactDOMServer.renderToString(ssr(ctx.req.url,context,newState));
 
