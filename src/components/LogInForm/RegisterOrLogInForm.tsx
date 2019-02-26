@@ -1,12 +1,17 @@
 import * as React from 'react';
 import axios from 'axios';
 import {Form, Icon, Input, Button,Modal} from 'antd';
+import { connect } from 'react-redux';
+import {changeLogInStatus} from 'src/actions/login';
+import {changeLogInBoxShow} from 'src/actions/logInBox';
 
 interface RegisterFormWrapProps {
   visible:boolean,
   form?:any,
   handleCancel:(e:any)=>void,
   showLogIn:boolean,
+  changeLogInStatus:(value:boolean)=>void,
+  changeLogInBoxShow:(value:boolean)=>void
 }
 
 class RegisterFormWrap extends React.Component<RegisterFormWrapProps, any> {
@@ -46,7 +51,14 @@ class RegisterFormWrap extends React.Component<RegisterFormWrapProps, any> {
             })
             .then((res)=>{
               console.log(res)
-              localStorage.setItem("token",res.data.token)
+              if(res.data.success){
+                this.props.changeLogInStatus(true)
+                this.props.changeLogInBoxShow(false)
+                localStorage.setItem("token",res.data.token)
+              }else{
+                this.props.changeLogInBoxShow(false)
+                alert('登录出错了')
+              }
             })
           }
       });
@@ -109,4 +121,12 @@ class RegisterFormWrap extends React.Component<RegisterFormWrapProps, any> {
 
 const RegisterOrLogInForm = Form.create({})(RegisterFormWrap)
 
-export default RegisterOrLogInForm;
+// const mapStateToProps = (state:any,ownProps:any)=>{
+//   return {
+//     login:state.login
+//   }
+// }
+
+const mapDispatchToProps = {changeLogInStatus,changeLogInBoxShow}
+
+export default connect(()=>({}),mapDispatchToProps)(RegisterOrLogInForm);

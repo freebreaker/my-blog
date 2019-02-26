@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './TopBar.css';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ReleaseBtn from './ReleaseBtn/ReleaseBtn';
 import MainPageBtn from './MainPageBtn/MainPageBtn';
@@ -8,9 +9,12 @@ import LogInBox from '../LogInForm/LogInBox';
 
 export interface TopBarProps {
     ShowReleaseBtn:boolean
+    login:{
+      isLogIn:boolean
+    }
 }
 
-export default class TopBar extends React.Component<TopBarProps, any> {
+class TopBarWrap extends React.Component<TopBarProps, any> {
   public render() {
     return (
       <div className="TopBar">
@@ -32,9 +36,23 @@ export default class TopBar extends React.Component<TopBarProps, any> {
         }}>
             写文章
         </Link>
-        <MainPageBtn Show={true}/>
-        <LogInBox/>
+        {
+          this.props.login.isLogIn?<MainPageBtn Show={true}/>
+          :<LogInBox/>
+        }
       </div>
     );
   }
 }
+
+const mapStateToProps = (state:any,ownProps:any)=>{
+  return {
+    login:state.login,
+  }
+}
+
+const mapDispatchToProps = {}
+
+const TopBar = connect(mapStateToProps, mapDispatchToProps)(TopBarWrap);
+
+export default TopBar;

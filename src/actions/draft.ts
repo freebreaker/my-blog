@@ -1,4 +1,5 @@
 import axios from "../util/Axios";
+import {changeLogInBoxShow} from './logInBox'
 
 export const createDraft = (draftMsgs:{
         draftId:string,
@@ -19,7 +20,9 @@ export const createDraft = (draftMsgs:{
             withCredentials:true
         })
         .then(res=>{
-            console.log(res)
+            if(!res.data.success&&res.data.code ===10000){
+                dispatch(changeLogInBoxShow(true))
+            }
         })
     )
 )
@@ -33,16 +36,19 @@ export const getDraft = (getDraftParams:{
             url:`/getDraft?id=${getDraftParams.draftId}`
         })
         .then(res=>{
-            console.log(12313)
-            console.log(res)
-            dispatch({
-                type:"STORE_DRAFT_TITLE",
-                payload:res.data.title
-            })
-            dispatch({
-                type:"STORE_DRAFT_CONTENT",
-                payload:res.data.markdown
-            })
+            if(!res.data.success&&res.data.code ===10000){
+                dispatch(changeLogInBoxShow(true))
+            }else{
+                dispatch({
+                    type:"STORE_DRAFT_TITLE",
+                    payload:res.data.title
+                })
+                dispatch({
+                    type:"STORE_DRAFT_CONTENT",
+                    payload:res.data.markdown
+                })
+            }
+
         })
     )
 )
@@ -67,7 +73,9 @@ export const updateDraft = (draftMsgs:{
             withCredentials:true
         })
         .then(res=>{
-            console.log(res)
+            if(!res.data.success&&res.data.code ===10000){
+                dispatch(changeLogInBoxShow(true))
+            }
         })
     )
 )
@@ -93,10 +101,15 @@ export const getDraftList =()=>(
             withCredentials:true
         })
         .then(res=>{
-            dispatch({
-                type:"STORE_DRAFTLIST",
-                payload:res.data
-            })
+            if(!res.data.success&&res.data.code ===10000){
+                dispatch(changeLogInBoxShow(true))
+            }else{
+                dispatch({
+                    type:"STORE_DRAFTLIST",
+                    payload:res.data
+                })
+            }
+
         })
     )
 )
@@ -114,11 +127,15 @@ export const deleteDraft =(draftId:string)=>(
             withCredentials:true
         })
         .then(res=>{
-            console.log(res.data)
-            dispatch({
-                type:"STORE_DRAFTLIST",
-                payload:res.data.data
-            })
+            if(!res.data.success&&res.data.code ===10000){
+                dispatch(changeLogInBoxShow(true))
+            }else{
+                dispatch({
+                    type:"STORE_DRAFTLIST",
+                    payload:res.data.data
+                })
+            }
+
         })
     )
 )

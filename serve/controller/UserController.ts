@@ -3,10 +3,10 @@ import {v1} from 'node-uuid';
 import * as jwt from 'jsonwebtoken';
 
 export let LogIn = async(ctx:any,next:any)=>{  // 标签list
-
+   
     const auth = ctx.get("Authorization")
 
-    if(auth!=="undefined"){
+    if(auth!=="undefined"&&auth){
 
         const verifiedPayload:any = jwt.verify(auth,"secret")
 
@@ -17,7 +17,6 @@ export let LogIn = async(ctx:any,next:any)=>{  // 标签list
         })
 
         if(result.token === auth){
-            console.log("token success")
             ctx.body = {
                 success:true,
                 msg:"已登录"

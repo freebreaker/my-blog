@@ -1,23 +1,16 @@
 import * as React from 'react';
 import * as router from 'react-router-dom'
-import Allpages from './components/Allpages';
-import Editor from './components/Editor/Editor';
-import Article from './components/Article/Article';
-import DraftList from './components/Draft/DraftList';
-import DraftEditor from './components/Draft/DraftEditor';
+import RouterAuth from './RouterAuth';
+import { routerConfig } from './routerConfig';
 
-const {BrowserRouter,Switch,Route} = router
+const {BrowserRouter,Switch} = router
 
 class RouterContainer extends React.Component{
     public render(){
         return (
             <BrowserRouter basename="/">
                 <Switch>
-                    <Route path='/' exact={true} component={Allpages}/>
-                    <Route path='/editor/new' component={Editor}/>
-                    <Route path='/editor/:id' component={DraftEditor}/>
-                    <Route path='/p/:id' component={Article}/>
-                    <Route path='/draft' component={DraftList}/>
+                    <RouterAuth config={routerConfig}/>
                 </Switch>
             </BrowserRouter>
         )

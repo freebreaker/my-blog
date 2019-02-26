@@ -18,6 +18,12 @@ const store = configureStore({
     draftList:[],
     title:"",
     content:""
+  },
+  loginBox:{
+    show:false
+  },
+  login:{
+    isLogIn:false
   }
 })
 

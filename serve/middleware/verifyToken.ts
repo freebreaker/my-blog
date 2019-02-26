@@ -14,7 +14,11 @@ const verifyToken = async (ctx:any,next:any)=>{
         await next()
 
     }catch(error){
-        ctx.throw(401,error)
+        ctx.body ={
+            success:false,
+            msg:"用户未登录",
+            code:10000
+        }
     }
 
 }
